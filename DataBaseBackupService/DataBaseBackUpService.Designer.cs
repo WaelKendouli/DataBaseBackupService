@@ -1,6 +1,6 @@
 ﻿namespace DataBaseBackupService
 {
-    partial class Service1
+    partial class DataBaseBackUpService
     {
         /// <summary> 
         /// Required designer variable.

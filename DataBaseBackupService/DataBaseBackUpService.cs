@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace DataBaseBackupService
 {
-    public partial class Service1 : ServiceBase
+    public partial class DataBaseBackUpService : ServiceBase
     {
-        public Service1()
+        public DataBaseBackUpService()
         {
             InitializeComponent();
         }
