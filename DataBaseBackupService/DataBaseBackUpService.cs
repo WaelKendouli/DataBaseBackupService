@@ -16,9 +16,10 @@ namespace DataBaseBackupService
         {
             InitializeComponent();
         }
-
+        clsDatabaseBackupProvider DBBackup;
         protected override void OnStart(string[] args)
         {
+           // DBBackup = new clsDatabaseBackupProvider()
         }
 
         protected override void OnStop()
