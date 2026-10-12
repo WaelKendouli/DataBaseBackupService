@@ -14,14 +14,13 @@ namespace DataBaseBackupService
         private string _BackupDirectory { get; set; }
         private string _DataBaseName { get; set; }
         private string _LogsDirectory { get; set; }
-        private int _BackupIntervalInMinutes { get; set; }
+  
 
-        public clsDatabaseBackupProvider(string connectionString, string backupDirectory, string logsDirectory, int backupIntervalInMinutes , string DatabaseName)
+        public clsDatabaseBackupProvider(string connectionString, string backupDirectory, string logsDirectory , string DatabaseName)
         {
             _ConnectionString = connectionString;
             _BackupDirectory = backupDirectory;
             _LogsDirectory = logsDirectory;
-            _BackupIntervalInMinutes = backupIntervalInMinutes;
             _DataBaseName = DatabaseName;
         }
 
