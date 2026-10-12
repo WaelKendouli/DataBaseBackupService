@@ -29,7 +29,8 @@ namespace DataBaseBackupService
             {
                 ServiceName = "MyFirstWinService", // Must match the ServiceName in your ServiceBase class
                 DisplayName = "My First Windows Service",
-                StartType = ServiceStartMode.Manual // Or Automatic, depending on requirements
+                StartType = ServiceStartMode.Manual ,// Or Automatic, depending on requirements
+                ServicesDependedOn = new string[] { "MSSQLSERVER" , "RpcSs" , "EventLog" } // Specify the service dependencies here
             };
 
             // Add installers to the installer collection
