@@ -45,7 +45,10 @@ namespace DataBaseBackupService
                 {
                     using (SqlCommand cmd = new SqlCommand(sqlCmd, cnx))
                     {
-                        cmd.Parameters.AddWithValue("@backupPath", this._BackupDirectory);
+                        cmd.Parameters.AddWithValue("@backupPath", Path.Combine(
+                    this._BackupDirectory,
+                    $"{this._DataBaseName}_{DateTime.Now:yyyyMMdd_HHmmss}.bak"));
+
                         cnx.Open();
                         cmd.ExecuteNonQuery();
                         Log("Database backup provided successfully", this._LogsDirectory);

@@ -18,21 +18,30 @@ namespace DataBaseBackupService
             InitializeComponent();
         }
         clsDatabaseBackupProvider DB_Backup;
-        string LogsDirectory = ConfigurationManager.AppSettings["LogFolder"];
 
         protected override void OnStart(string[] args)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            string ConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
             string BackupDirectory = ConfigurationManager.AppSettings["BackupFolder"];
             string DatabaseName = "TestDB";
+            string LogsDirectory = ConfigurationManager.AppSettings["LogFolder"];
 
             DB_Backup = new clsDatabaseBackupProvider(ConnectionString , BackupDirectory , LogsDirectory , DatabaseName);
+            DB_Backup.ProvideBackUP();
             DB_Backup.Log("Service Started", LogsDirectory);
         }
 
+        public void StartInConsole()
+        {
+            OnStart(null);
+            Console.WriteLine("Service started. Press any key to stop...");
+            Console.ReadKey();
+            OnStop();
+        }
         protected override void OnStop()
         {
-            DB_Backup.Log("Service Stopped", LogsDirectory);
+           
+            DB_Backup.Log("Service Stopped", ConfigurationManager.AppSettings["LogFolder"]);
         }
     }
 }

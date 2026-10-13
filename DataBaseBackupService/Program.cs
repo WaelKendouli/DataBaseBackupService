@@ -14,12 +14,23 @@ namespace DataBaseBackupService
         /// </summary>
         static void Main()
         {
-            ServiceBase[] ServicesToRun;
-            ServicesToRun = new ServiceBase[]
+            if (Environment.UserInteractive)
             {
-                new DataBaseBackUpService()
-            };
-            ServiceBase.Run(ServicesToRun);
+                // Running in console mode
+                Console.WriteLine("Running in console mode...");
+                DataBaseBackUpService service = new DataBaseBackUpService();
+                service.StartInConsole();
+            }
+            else
+            {
+                // Running as a Windows Service
+                ServiceBase[] ServicesToRun;
+                ServicesToRun = new ServiceBase[]
+                {
+                    new DataBaseBackUpService()
+                };
+                ServiceBase.Run(ServicesToRun);
+            }
         }
     }
 }
