@@ -27,8 +27,8 @@ namespace DataBaseBackupService
             // Configure the Service Installer
             serviceInstaller = new ServiceInstaller
             {
-                ServiceName = "MyFirstWinService", // Must match the ServiceName in your ServiceBase class
-                DisplayName = "My First Windows Service",
+                ServiceName = "DataBaseBackupService", // Must match the ServiceName in your ServiceBase class
+                DisplayName = "Database backup Service",
                 StartType = ServiceStartMode.Manual ,// Or Automatic, depending on requirements
                 ServicesDependedOn = new string[] { "MSSQLSERVER" , "RpcSs" , "EventLog" } // Specify the service dependencies here
             };
