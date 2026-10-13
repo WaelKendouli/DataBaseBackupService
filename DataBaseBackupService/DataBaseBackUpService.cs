@@ -25,9 +25,11 @@ namespace DataBaseBackupService
             string BackupDirectory = ConfigurationManager.AppSettings["BackupFolder"];
             string DatabaseName = "TestDB";
             string LogsDirectory = ConfigurationManager.AppSettings["LogFolder"];
+            int MinutesInterval = Convert.ToInt32(ConfigurationManager.AppSettings["BackupIntervalMinutes"]);
 
-            DB_Backup = new clsDatabaseBackupProvider(ConnectionString , BackupDirectory , LogsDirectory , DatabaseName);
+            DB_Backup = new clsDatabaseBackupProvider(ConnectionString , BackupDirectory , LogsDirectory , DatabaseName, MinutesInterval);
             DB_Backup.ProvideBackUP();
+            DB_Backup.StartBackupTimer();
             DB_Backup.Log("Service Started", LogsDirectory);
         }
 
@@ -42,6 +44,7 @@ namespace DataBaseBackupService
         {
            
             DB_Backup.Log("Service Stopped", ConfigurationManager.AppSettings["LogFolder"]);
+            DB_Backup.Dispose();
         }
     }
 }
