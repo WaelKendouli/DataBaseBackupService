@@ -47,7 +47,7 @@ namespace DataBaseBackupService
                     {
                         cmd.Parameters.AddWithValue("@backupPath", Path.Combine(
                     this._BackupDirectory,
-                    $"{this._DataBaseName}_{DateTime.Now:yyyyMMdd_HHmmss}.bak"));
+                    $"{this._DataBaseName}_{DateTime.UtcNow:yyyyMMdd_HHmmss}.bak"));
 
                         cnx.Open();
                         cmd.ExecuteNonQuery();
